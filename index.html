@@ -11,7 +11,7 @@
             padding: 0;
             text-align: center;
             overflow: hidden;
-            font-family: 'Noto Serif SC', serif; /* 瘦金体风格 */
+            font-family: 'Noto Serif SC', serif;
         }
 
         /* 外页背景 */
@@ -81,15 +81,15 @@
         }
 
         .frog-emoji {
-            font-size: 9vw;
+            font-size: 6vw;
             margin-bottom: 2vw;
         }
 
         .message {
-            font-size: 2vw;
+            font-size: 3vw;
             white-space: nowrap;
             overflow: hidden;
-            width: 60%;
+            width: 80%;
         }
 
         /* 飘落动画 */
@@ -115,7 +115,7 @@
             .open-button { font-size: 4vw; padding: 3vw 5vw; }
             .open-button img { width: 4vw; height: 4vw; }
             .frog-emoji { font-size: 8vw; }
-            .message { font-size: 3vw; }
+            .message { font-size: 5vw; }
         }
     </style>
 </head>
@@ -142,7 +142,10 @@
     <!-- 内页 -->
     <div id="inner-page">
         <div class="frog-emoji">🐸</div>
-        <div class="message" id="message"></div>
+        <div class="message">
+            <div id="line1"></div>  <!-- 第一行文字 -->
+            <div id="line2"></div>  <!-- 第二行文字 -->
+        </div>
     </div>
 
     <script>
@@ -150,32 +153,45 @@
             document.getElementById("outer-page").style.display = "none";
             document.getElementById("inner-page").style.display = "flex";
 
-            // 逐字显示消息
-            const messageText = "你好，我是你朋友送你的情人节小蛤蟆。 现在我要开始叫了。";
-            let index = 0;
-            const messageDiv = document.getElementById("message");
+            // 逐字显示第一行
+            const text1 = "你好，我是你朋友送你的情人节小蛤蟆。";
+            const text2 = "现在，我要开始叫了。";
+            let index1 = 0;
+            let index2 = 0;
+            const line1Div = document.getElementById("line1");
+            const line2Div = document.getElementById("line2");
 
-            function typeMessage() {
-                if (index < messageText.length) {
-                    messageDiv.textContent += messageText[index];
-                    index++;
-                    setTimeout(typeMessage, 200);
+            function typeLine1() {
+                if (index1 < text1.length) {
+                    line1Div.textContent += text1[index1];
+                    index1++;
+                    setTimeout(typeLine1, 200);
+                } else {
+                    setTimeout(typeLine2, 500); // 第一行完成后，0.5秒后显示第二行
+                }
+            }
+
+            function typeLine2() {
+                if (index2 < text2.length) {
+                    line2Div.textContent += text2[index2];
+                    index2++;
+                    setTimeout(typeLine2, 200);
                 } else {
                     startFalling();
                 }
             }
 
-            setTimeout(typeMessage, 1000); // 1秒后开始逐字显示
+            setTimeout(typeLine1, 1000); // 1秒后开始显示第一行
         }
 
         function startFalling() {
             setInterval(() => {
-                createFallingItem("❄"); // 雪花
-            }, 33); // 每秒30个雪花
+                createFallingItem("❄");
+            }, 33);
 
             setInterval(() => {
-                createFallingItem("孤寡"); // “孤寡” 文本
-            }, 25); // 每秒40个孤寡
+                createFallingItem("孤寡");
+            }, 25);
         }
 
         function createFallingItem(text) {
