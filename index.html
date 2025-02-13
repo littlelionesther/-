@@ -24,7 +24,6 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            padding: 5%;
         }
 
         /* 卡片 */
@@ -32,9 +31,9 @@
             position: relative;
             z-index: 2;
             background: rgba(255, 160, 180, 0.95);
-            padding: 5%;
-            max-width: 80vw;
-            max-height: 80vh;
+            padding: 40px;
+            width: 600px;
+            height: 400px;
             border-radius: 15px;
             box-shadow: 0 4px 12px rgba(180, 80, 255, 0.5);
             display: flex;
@@ -42,26 +41,26 @@
             align-items: center;
         }
 
-        .romantic-text { font-size: 4vw; color: #d63384; font-weight: bold; }
-        .dog-emoji { font-size: 5vw; }
-        .text { font-size: 3vw; color: #d63384; font-weight: bold; }
+        .romantic-text { font-size: 32px; color: #d63384; font-weight: bold; }
+        .dog-emoji { font-size: 48px; }
+        .text { font-size: 24px; color: #d63384; font-weight: bold; }
 
         /* 按钮 */
         .open-button {
-            font-size: 3vw;
-            padding: 2vw 4vw;
+            font-size: 24px;
+            padding: 10px 20px;
             background: white;
             border: 3px solid #ff69b4;
             border-radius: 12px;
             cursor: pointer;
-            margin-top: 5%;
+            margin-top: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1vw;
+            gap: 10px;
         }
 
-        .open-button img { width: 3vw; height: 3vw; }
+        .open-button img { width: 24px; height: 24px; }
 
         /* 内页（黑暗孤寡页） */
         #inner-page {
@@ -81,21 +80,21 @@
         }
 
         .frog-emoji {
-            font-size: 6vw;
-            margin-bottom: 2vw;
+            font-size: 48px;
+            margin-bottom: 20px;
         }
 
         .message {
-            font-size: 3vw;
+            font-size: 24px;
             white-space: nowrap;
             overflow: hidden;
-            width: 80%;
+            width: 600px;
         }
 
         /* 飘落动画 */
         .falling {
             position: absolute;
-            font-size: 3vw;
+            font-size: 24px;
             opacity: 1;
             animation: fall 3s linear forwards;
             font-family: 'Creepster', cursive;
@@ -106,17 +105,6 @@
             100% { opacity: 0; transform: translateY(100vh); }
         }
 
-        /* 响应式优化 */
-        @media (max-width: 600px) {
-            .content { max-width: 90vw; max-height: 90vh; }
-            .romantic-text { font-size: 6vw; }
-            .text { font-size: 4vw; }
-            .dog-emoji { font-size: 7vw; }
-            .open-button { font-size: 4vw; padding: 3vw 5vw; }
-            .open-button img { width: 4vw; height: 4vw; }
-            .frog-emoji { font-size: 8vw; }
-            .message { font-size: 5vw; }
-        }
     </style>
 </head>
 <body>
@@ -125,7 +113,7 @@
     <div id="outer-page">
         <div class="content">
             <div class="romantic-text">
-                🎉 恭喜你！你收到了一份单身狗专属的情人节礼物！ 🎁
+                🎉 柴，恭喜你！你收到了一份单身狗专属的情人节礼物！ 🎁
             </div>
             <div class="dog-emoji">🐕</div>
             <div class="text">情人节的时刻，</div>
