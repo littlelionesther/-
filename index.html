@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>情人节贺卡</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300&family=Creepster&display=swap" rel="stylesheet">
+    <title>Valentine's Day Card</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             padding: 0;
             text-align: center;
             overflow: hidden;
-            font-family: 'Noto Serif SC', serif;
         }
 
-        /* 外页背景 */
+        /* 外页样式 */
         #outer-page {
-            background: linear-gradient(135deg, #f8c6ff, #ff99cc);
+            background: linear-gradient(135deg, #ff85a2, #ffbed4);
             width: 100vw;
             height: 100vh;
             display: flex;
@@ -24,115 +23,136 @@
             justify-content: center;
             align-items: center;
             position: relative;
+            font-family: 'Great Vibes', cursive;
         }
 
-        /* 卡片 */
+        /* 爱心边框 */
+        .border {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 10px solid transparent;
+            background: repeating-linear-gradient(45deg, pink, pink 10px, white 10px, white 20px);
+            border-radius: 20px;
+            animation: loveGlow 2s infinite alternate;
+        }
+
+        @keyframes loveGlow {
+            0% { box-shadow: 0 0 10px pink; }
+            100% { box-shadow: 0 0 20px red; }
+        }
+
         .content {
             position: relative;
             z-index: 2;
-            background: rgba(255, 160, 180, 0.95);
-            padding: 40px;
-            width: 600px;
-            height: 400px;
+            background: rgba(255, 192, 203, 0.9);
+            padding: 20px;
             border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(180, 80, 255, 0.5);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
         }
 
-        .romantic-text { font-size: 32px; color: #d63384; font-weight: bold; }
-        .dog-emoji { font-size: 48px; }
-        .text { font-size: 24px; color: #d63384; font-weight: bold; }
+        /* 浪漫英文文字 */
+        .romantic-text {
+            font-size: 32px;
+            font-family: 'Great Vibes', cursive;
+            color: #d63384;
+            font-weight: bold;
+            animation: glow 1.5s infinite alternate;
+        }
 
-        /* 按钮 */
+        @keyframes glow {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        .dog-emoji {
+            font-size: 60px;
+        }
+
+        .text {
+            font-size: 28px;
+            margin: 10px 0;
+            color: #d63384;
+            font-weight: bold;
+        }
+
+        /* 信封按钮 */
         .open-button {
             font-size: 24px;
-            padding: 10px 20px;
+            padding: 12px 24px;
             background: white;
             border: 3px solid #ff69b4;
             border-radius: 12px;
             cursor: pointer;
             margin-top: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            transition: 0.3s;
+            font-family: 'Great Vibes', cursive;
+            animation: bounce 1.5s infinite;
         }
 
-        .open-button img { width: 24px; height: 24px; }
-
-        /* 内页（黑暗孤寡页） */
-        #inner-page {
-            display: none;
-            background-color: black;
-            width: 100vw;
-            height: 100vh;
+        .open-button:hover {
+            background: #ff69b4;
             color: white;
-            position: relative;
-            overflow: hidden;
-            font-family: 'Creepster', cursive;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
         }
 
-        .frog-emoji {
-            font-size: 48px;
-            margin-bottom: 20px;
+        .open-button::before {
+            content: "✉";
+            font-size: 28px;
+            margin-right: 10px;
         }
 
-        .message {
-            font-size: 24px;
-            white-space: nowrap;
-            overflow: hidden;
-            width: 600px;
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
-        /* 飘落动画 */
-        .falling {
+        /* 动态闪烁的情人节 Emoji */
+        .emoji {
+            font-size: 30px;
             position: absolute;
-            font-size: 24px;
-            opacity: 1;
-            animation: fall 3s linear forwards;
-            font-family: 'Creepster', cursive;
+            animation: float 3s infinite alternate ease-in-out, blink 1.5s infinite alternate;
         }
 
-        @keyframes fall {
-            0% { opacity: 1; transform: translateY(0px); }
-            100% { opacity: 0; transform: translateY(100vh); }
+        .top-left { top: 10%; left: 10%; }
+        .top-right { top: 10%; right: 10%; }
+        .bottom-left { bottom: 10%; left: 10%; }
+        .bottom-right { bottom: 10%; right: 10%; }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
         }
 
+        @keyframes blink {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
     </style>
 </head>
 <body>
 
     <!-- 外页 -->
     <div id="outer-page">
+        <div class="border"></div>
+
+        <!-- 闪烁的情人节装饰 -->
+        <div class="emoji top-left">🌹</div>
+        <div class="emoji top-right">💘</div>
+        <div class="emoji bottom-left">❤️</div>
+        <div class="emoji bottom-right">💖</div>
+
         <div class="content">
             <div class="romantic-text">
-                🎉 柴，恭喜你！你收到了一份单身狗专属的情人节礼物！ 🎁
+                Congratulations! You've received a special Valentine's gift for single dogs.
             </div>
             <div class="dog-emoji">🐕</div>
-            <div class="text">情人节的时刻，</div>
-            <div class="text">狗狗也需要有人爱 ❤️</div>
-            <div class="text">你的朋友送了你一份特别的礼物</div>
-            <div class="text">快打开看看吧 💌</div>
-            <button class="open-button" onclick="openCard()">
-                <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="信封">
-                打开
-            </button>
-        </div>
-    </div>
-
-    <!-- 内页 -->
-    <div id="inner-page">
-        <div class="frog-emoji">🐸</div>
-        <div class="message">
-            <div id="line1"></div>  <!-- 第一行文字 -->
-            <div id="line2"></div>  <!-- 第二行文字 -->
+            <div class="text">On Valentine's Day,</div>
+            <div class="text">even dogs need love. 💕</div>
+            <div class="text">Your friend has sent you a special gift. 🎁</div>
+            <div class="text">Open it and see! 💌</div>
+            <button class="open-button" onclick="openCard()">Open</button>
         </div>
     </div>
 
